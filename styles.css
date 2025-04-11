@@ -127,19 +127,7 @@ footer {
   margin-left: 4px;
 }
 
-/* Toast-style alert (optional)
-.cart-alert {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  background-color: #28a745;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  z-index: 9999;
-  display: none;
-} */
+
 
 #featured-products .card-img-top {
   height: 200px;
