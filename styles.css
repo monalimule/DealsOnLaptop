@@ -1,0 +1,260 @@
+/* styles.css */
+body {
+  background-color: #f8f9fa;
+  padding-top: 60px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.category-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-card .card-body {
+  padding: 1.2rem;
+}
+
+.home-section {
+  background-color: #e8edff;
+  padding: 60px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+  background-color: #343a40;
+}
+
+.nav-link {
+  color: #ffffff !important;
+}
+
+.nav-link:hover {
+  color: #ffc107 !important;
+}
+
+header {
+  background: linear-gradient(to right, #4e54c8, #8f94fb);
+  color: white;
+  padding: 4rem 1rem;
+}
+
+.card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-title {
+  color: #343a40;
+}
+
+.btn-buy-now {
+  background-color: #4e54c8;
+  color: white;
+  border: none;
+}
+
+.btn-buy-now:hover {
+  background-color: #343a40;
+  color: white;
+}
+
+footer {
+  background-color: #343a40;
+  color: white;
+  margin-top: 50px;
+}
+
+section#about,
+section#contact {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icon img:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  background-color: #343a40;
+  color: white;
+}
+
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease-in-out;
+  filter: brightness(0) invert(1);
+}
+
+.social-icon img:hover {
+  transform: scale(1.2);
+  filter: brightness(1);
+}
+
+/* Cart Button */
+.add-to-cart {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #e63946;
+}
+
+/* Cart Icon Badge */
+#cart-count {
+  font-size: 0.75rem;
+  padding: 3px 7px;
+  border-radius: 50%;
+  background-color: #ffc107;
+  color: #212529;
+  vertical-align: top;
+  margin-left: 4px;
+}
+
+/* Toast-style alert (optional)
+.cart-alert {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 9999;
+  display: none;
+} */
+
+#featured-products .card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+#featured-products .card-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+#featured-products .buy-now-btn {
+  width: 100%;
+}
+
+/* General button hover */
+.btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Buy Now specific styling */
+.buy-now-btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.buy-now-btn:hover {
+  background-color: #28a745; /* darker green */
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card hover animation */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+* {
+  transition: all 0.2s ease-in-out;
+}
+/* Card Container
+.product-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+} */
+
+/* Hover Effect
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+} */
+
+/* Product Image
+.product-card img {
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+} */
+
+/* Card Body
+.product-card .card-body {
+  padding: 1rem;
+} */
+
+/* Title
+.product-card .card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+} */
+
+/* Text
+.product-card .card-text {
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+} */
+
+/* Buy Now Button
+.buy-now-btn {
+  width: 100%;
+  font-weight: bold;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  background-color: #218838;
+} */
+
+/* Category Colors (as applied earlier)
+.gaming-category {
+  border-top: 4px solid #e63946;
+  background-color: #fff5f5;
+}
+
+.professional-category {
+  border-top: 4px solid #1d3557;
+  background-color: #f0f8ff;
+}
+
+.student-category {
+  border-top: 4px solid #2a9d8f;
+  background-color: #f5fffa;
+} */

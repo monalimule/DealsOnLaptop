@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DealsOnLaptop - Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cartBtns = document.querySelectorAll(".add-to-cart");
+      cartBtns.forEach((button) => {
+        button.addEventListener("click", () => {
+          const product = {
+            id: button.dataset.id,
+            name: button.dataset.name,
+            price: button.dataset.price,
+            image: button.dataset.image,
+            quantity: 1,
+          };
+
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+          // Check if already in cart
+          const existing = cart.find((item) => item.id === product.id);
+          if (existing) {
+            existing.quantity++;
+          } else {
+            cart.push(product);
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          alert(`${product.name} added to cart!`);
+        });
+      });
+    });
+  </script>
+
+  <script>
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById("cart-count").textContent = count;
+    }
+    updateCartCount();
+  </script>
+  <!-- Cart Modal -->
+  <div
+    class="modal fade"
+    id="cartModal"
+    tabindex="-1"
+    aria-labelledby="cartModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" id="cart-modal-body">
+          <!-- Cart items will be injected here -->
+        </div>
+        <div class="modal-footer justify-content-between">
+          <h5>Total: ₹<span id="cart-total">0</span></h5>
+          <button class="btn btn-buy-now" id="buy-now-btn">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">DealsOnLaptop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#products">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.html">
+                🛒 Cart
+                <span id="cart-count" class="badge bg-light text-dark">0</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section class="home-section text-center" id="home">
+      <div class="container py-5 mt-5">
+        <h1 class="display-4 text-primary">Welcome to DealsOnLaptop</h1>
+        <p class="lead">
+          Discover the best laptop deals for every need — gaming, study,
+          business, and more.
+        </p>
+        <a href="#products" class="btn btn-buy-now mt-3">Explore Products</a>
+      </div>
+    </section>
+
+    <!-- Header -->
+    <header class="text-center py-5 mt-5">
+      <h1 class="text-primary">Find the Best Laptop Deals Here</h1>
+      <p class="lead">
+        We help you discover the perfect laptop for gaming, study, or work.
+      </p>
+    </header>
+
+    <!-- Section: Shop by Use -->
+    <section class="container mt-5">
+      <h3 class="mb-4 text-center">Shop by Use</h3>
+      <div class="row text-center g-4">
+        <div class="col-md-4">
+          <div class="card category-card h-100">
+            <img
+              src="https://cdn.pixabay.com/photo/2020/06/22/15/43/computer-5322323_1280.jpg"
+              class="card-img-top"
+              alt="Gaming"
+            />
+            <div class="card-body">
+              <h5 class="card-title">🎮 Gaming Laptops</h5>
+              <p class="card-text">
+                Powerful GPUs and high refresh rates for a smooth gaming
+                experience.
+              </p>
+              <a href="product.html?category=gaming" class="btn btn-primary"
+                >Explore Gaming</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card category-card h-100">
+            <img
+              src="https://cdn.pixabay.com/photo/2016/11/29/12/54/computer-1867758_1280.jpg"
+              class="card-img-top"
+              alt="Professional"
+            />
+            <div class="card-body">
+              <h5 class="card-title">💼 Professional Use</h5>
+              <p class="card-text">
+                Reliable laptops for work, designing, and multitasking.
+              </p>
+              <a
+                href="product.html?category=professional"
+                class="btn btn-primary"
+                >Explore Work Laptops</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card category-card h-100">
+            <img
+              src="https://cdn.pixabay.com/photo/2017/08/10/07/32/laptop-2617666_1280.jpg"
+              class="card-img-top"
+              alt="Student"
+            />
+            <div class="card-body">
+              <h5 class="card-title">📚 Budget for Students</h5>
+              <p class="card-text">
+                Lightweight and affordable laptops with all essentials.
+              </p>
+              <a href="product.html?category=student" class="btn btn-primary"
+                >Explore Student Picks</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Shop by Processor -->
+    <section class="container mt-5">
+      <h3 class="mb-4 text-center">Shop by Processor</h3>
+      <div class="row text-center g-4">
+        <div class="col-md-4">
+          <div class="card category-card h-100">
+            <img
+              src="https://cdn.pixabay.com/photo/2021/03/17/09/34/cpu-6100206_1280.jpg"
+              class="card-img-top"
+              alt="Intel"
+            />
+            <div class="card-body">
+              <h5 class="card-title">🔵 Intel Laptops</h5>
+              <p class="card-text">
+                Performance and battery life powered by Intel processors.
+              </p>
+              <a
+                href="product.html?processor=intel"
+                class="btn btn-outline-primary"
+                >Explore Intel</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card category-card h-100">
+            <img
+              src="https://cdn.pixabay.com/photo/2022/01/05/07/39/processor-6917767_1280.jpg"
+              class="card-img-top"
+              alt="Ryzen"
+            />
+            <div class="card-body">
+              <h5 class="card-title">🟠 AMD Ryzen Laptops</h5>
+              <p class="card-text">
+                Multitasking beasts built on Ryzen architecture.
+              </p>
+              <a
+                href="product.html?processor=ryzen"
+                class="btn btn-outline-primary"
+                >Explore Ryzen</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card category-card h-100">
+            <img
+              src="https://cdn.pixabay.com/photo/2016/10/10/10/50/macbook-1726107_1280.jpg"
+              class="card-img-top"
+              alt="macOS"
+            />
+            <div class="card-body">
+              <h5 class="card-title">🍏 Apple macOS</h5>
+              <p class="card-text">
+                Smooth macOS experience with Apple Silicon chips.
+              </p>
+              <a
+                href="product.html?processor=macos"
+                class="btn btn-outline-primary"
+                >Explore macOS</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Cards Section -->
+    <section class="container mt-5" id="products">
+      <h3 class="text-center text-primary mb-4">Featured Products</h3>
+      <div class="row g-4">
+        <!-- Example Product Card -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <img
+              src="https://m.media-amazon.com/images/I/81m2873U62L._AC_SL1500_.jpg"
+              class="card-img-top"
+              alt="Alienware M15 R7"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Alienware M15 R7</h5>
+              <p class="card-text">
+                i7 12700H | RTX 3070 Ti | 16GB RAM | 1TB SSD
+              </p>
+              <p class="text-success">₹1,49,999</p>
+              <button
+                class="btn btn-buy-now add-to-cart"
+                data-id="1"
+                data-name="Alienware M15 R7"
+                data-price="149999"
+                data-image="https://m.media-amazon.com/images/I/81m2873U62L._AC_SL1500_.jpg"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 1 -->
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img
+              src="https://m.media-amazon.com/images/I/81m2873U62L._AC_SL1500_.jpg"
+              class="card-img-top"
+              alt="Alienware M15"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Alienware M15 R7</h5>
+              <p class="card-text">Intel i7, RTX 3070 Ti, 16GB RAM, 1TB SSD</p>
+              <!-- <a href="product.html" class="btn btn-buy-now">View</a> -->
+              <a href="product-detail.html" class="btn btn-success buy-now-btn"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img
+              src="https://m.media-amazon.com/images/I/71Dqz9HYYxL._AC_SL1500_.jpg"
+              class="card-img-top"
+              alt="Lenovo IdeaPad"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Lenovo IdeaPad 3</h5>
+              <p class="card-text">Ryzen 5, 8GB RAM, 512GB SSD</p>
+              <!-- <a href="product.html" class="btn btn-buy-now">View</a> -->
+              <a href="product-detail.html" class="btn btn-success buy-now-btn"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img
+              src="https://m.media-amazon.com/images/I/71s1LRpaprL._AC_SL1500_.jpg"
+              class="card-img-top"
+              alt="Acer Aspire 3"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Acer Aspire 3</h5>
+              <p class="card-text">Budget: Ryzen 3, 8GB RAM, 256GB SSD</p>
+              <!-- <a href="product.html" class="btn btn-buy-now">View</a> -->
+              <a href="product-detail.html" class="btn btn-success buy-now-btn"
+                >Buy Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="container mt-5" id="about">
+      <h3 class="text-center text-primary">About Us</h3>
+      <p class="text-center mt-3">
+        At <strong>DealsOnLaptop</strong>, we’re passionate about helping you
+        discover the right laptop for your needs. We feature the latest models
+        with honest reviews and great deals.
+      </p>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="container my-5" id="contact">
+      <h3 class="text-center text-primary">Contact Us</h3>
+      <form class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-buy-now">Send Message</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-dark text-white">
+      <p>© 2025 DealsOnLaptop. All rights reserved.</p>
+      <p>Follow us on:</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="Instagram"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/1384/1384063.png"
+            alt="Instagram"
+          />
+        </a>
+        <a
+          href="https://twitter.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="Twitter"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/733/733579.png"
+            alt="Twitter"
+          />
+        </a>
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="Facebook"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/733/733547.png"
+            alt="Facebook"
+          />
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="LinkedIn"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/1384/1384014.png"
+            alt="LinkedIn"
+          />
+        </a>
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="YouTube"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/1384/1384060.png"
+            alt="YouTube"
+          />
+        </a>
+      </div>
+    </footer>
+    <div id="cart-toast" class="cart-alert"></div>
+
+    <script>
+      function showCartAlert(message) {
+        const toast = document.getElementById("cart-toast");
+        toast.textContent = message;
+        toast.style.display = "block";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

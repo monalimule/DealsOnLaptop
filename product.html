@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <script>
+    // Read query parameters
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    const processor = params.get("processor");
+
+    // Sample product array (for demonstration)
+    const allProducts = [
+      {
+        name: "Acer Nitro 5",
+        category: "gaming",
+        processor: "intel",
+        price: 700,
+      },
+      {
+        name: "MacBook Pro",
+        category: "professional",
+        processor: "macos",
+        price: 1200,
+      },
+      {
+        name: "HP Pavilion",
+        category: "student",
+        processor: "ryzen",
+        price: 500,
+      },
+      { name: "ASUS ROG", category: "gaming", processor: "ryzen", price: 850 },
+      {
+        name: "Dell XPS",
+        category: "professional",
+        processor: "intel",
+        price: 1000,
+      },
+      // Add more products...
+    ];
+
+    // Filter logic
+    let filtered = allProducts;
+    if (category) {
+      filtered = filtered.filter((p) => p.category === category);
+    }
+    if (processor) {
+      filtered = filtered.filter((p) => p.processor === processor);
+    }
+
+    // Render filtered products
+    const container = document.getElementById("filtered-products");
+    if (filtered.length === 0) {
+      container.innerHTML = "<p>No matching products found.</p>";
+    } else {
+      container.innerHTML = filtered
+        .map(
+          (product) => `
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">${product.name}</h5>
+          <p class="card-text">Category: ${product.category}</p>
+          <p class="card-text">Processor: ${product.processor}</p>
+          <p class="card-text">Price: $${product.price}</p>
+          <button class="btn btn-success">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  `
+        )
+        .join("");
+    }
+  </script>
+  <body>
+    <section class="container my-5">
+      <h3 class="text-center mb-4">Filtered Products</h3>
+      <div class="row" id="filtered-products">
+        <!-- Filtered products will show here -->
+      </div>
+    </section>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">DealsOnLaptop</a>
+      </div>
+    </nav>
+
+    <!-- Product Details -->
+    <div class="container mt-5 pt-5">
+      <h2 class="text-center text-primary">Alienware M15 R7</h2>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <img
+            src="https://m.media-amazon.com/images/I/81m2873U62L._AC_SL1500_.jpg"
+            alt="Alienware M15"
+            class="img-fluid"
+          />
+        </div>
+        <div class="col-md-6">
+          <h4>Specifications:</h4>
+          <ul>
+            <li>Intel i7 12700H Processor</li>
+            <li>NVIDIA RTX 3070 Ti (8GB)</li>
+            <li>16GB DDR5 RAM</li>
+            <li>1TB SSD</li>
+            <li>15.6" QHD 240Hz Display</li>
+          </ul>
+          <h4 class="text-success mt-3">₹1,49,999</h4>
+          <button class="btn btn-buy-now">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="text-center py-4 bg-dark text-white">
+      <p>© 2025 DealsOnLaptop. All rights reserved.</p>
+      <p>Follow us on:</p>
+      <div class="d-flex justify-content-center gap-3">
+        <a
+          href="https://instagram.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="Instagram"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/1384/1384063.png"
+            alt="Instagram"
+          />
+        </a>
+        <a
+          href="https://twitter.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="Twitter"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/733/733579.png"
+            alt="Twitter"
+          />
+        </a>
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="Facebook"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/733/733547.png"
+            alt="Facebook"
+          />
+        </a>
+        <a
+          href="https://linkedin.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="LinkedIn"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/1384/1384014.png"
+            alt="LinkedIn"
+          />
+        </a>
+        <a
+          href="https://youtube.com"
+          target="_blank"
+          class="social-icon"
+          aria-label="YouTube"
+        >
+          <img
+            src="https://cdn-icons-png.flaticon.com/24/1384/1384060.png"
+            alt="YouTube"
+          />
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
